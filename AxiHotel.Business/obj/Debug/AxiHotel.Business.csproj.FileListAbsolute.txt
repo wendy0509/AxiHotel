@@ -1,0 +1,13 @@
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Business\bin\Debug\AxiHotel.Business.exe.config
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Business\bin\Debug\AxiHotel.Business.exe
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Business\bin\Debug\AxiHotel.Business.pdb
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Business\bin\Debug\AxiHotel.Data.exe
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Business\bin\Debug\AxiHotel.Data.pdb
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Business\bin\Debug\AxiHotel.Data.exe.config
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Business\obj\Debug\AxiHotel.Business.csproj.AssemblyReference.cache
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Business\obj\Debug\AxiHotel.Business.Properties.Resources.resources
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Business\obj\Debug\AxiHotel.Business.csproj.GenerateResource.cache
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Business\obj\Debug\AxiHotel.Business.csproj.CoreCompileInputs.cache
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Business\obj\Debug\AxiHotel.733FB7C1.Up2Date
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Business\obj\Debug\AxiHotel.Business.exe
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Business\obj\Debug\AxiHotel.Business.pdb

@@ -1,0 +1,9 @@
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Data\bin\Debug\AxiHotel.Data.exe.config
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Data\bin\Debug\AxiHotel.Data.exe
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Data\bin\Debug\AxiHotel.Data.pdb
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Data\obj\Debug\AxiHotel.Data.csproj.AssemblyReference.cache
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Data\obj\Debug\AxiHotel.Data.Properties.Resources.resources
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Data\obj\Debug\AxiHotel.Data.csproj.GenerateResource.cache
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Data\obj\Debug\AxiHotel.Data.csproj.CoreCompileInputs.cache
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Data\obj\Debug\AxiHotel.Data.exe
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.Data\obj\Debug\AxiHotel.Data.pdb

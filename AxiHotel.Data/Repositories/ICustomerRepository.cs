@@ -11,7 +11,8 @@ namespace AxiHotel.Data.Repositories
     {
         int Add(Customer c);
         void Update(Customer c);
-        IEnumerable<Customer> Search(string text); // filtrar por nombre/apellido/identificación/teléfono
-        void SetTag(int idCustomer, string tag);   // opcional
+        Customer Get(int id);
+        IEnumerable<Customer> Search(string text);
+        void SetTag(int idCustomer, string tag);
     }
 }

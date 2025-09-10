@@ -10,28 +10,22 @@ namespace AxiHotel.Business
 {
     public class CustomersService
     {
-        private readonly ICustomerRepository _repo;
-        public CustomersService(ICustomerRepository repo) { _repo = repo; }
-        public int Register(Customer c)
-        {
-            if (string.IsNullOrWhiteSpace(c.NameCustomer)) throw new ArgumentException("Nombre requerido");
-            if (string.IsNullOrWhiteSpace(c.LastCustomer)) throw new ArgumentException("Apellido requerido");
-            if (string.IsNullOrWhiteSpace(c.IdentifyCustomer)) throw new ArgumentException("Identificación requerida");
-            // podrías validar formato de teléfono, duplicados, etc.
+        private readonly CustomerRepository _repo;
 
-            return _repo.Add(c);
+        public CustomersService(CustomerRepository repo)
+        {
+            _repo = repo;
         }
 
-        public void Edit(Customer c)
-        {
-            if (c.IdCustomer <= 0) throw new ArgumentException("Cliente inválido");
-            _repo.Update(c);
-        }
+        public IEnumerable<Customer> GetAll() => _repo.GetAll();
 
-        public IEnumerable<Customer> Filter(string text) => _repo.Search(text);
-
-        public void Tag(int idCustomer, string tag) => _repo.SetTag(idCustomer, tag);
+        public IEnumerable<Customer> Search(string filtro) =>
+            _repo.Search(filtro);
 
         public Customer Get(int id) => _repo.Get(id);
+
+        public int Register(Customer c) => _repo.Add(c);
+
+        public void Edit(Customer c) => _repo.Update(c);
     }
 }

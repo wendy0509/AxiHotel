@@ -8,13 +8,13 @@ namespace AxiHotel.Data.Models
 {
     public class Customer
     {
-        public int IdCustomer;
-        public string NameCustomer;
-        public string LastCustomer;
-        public string IdentifyCustomer;
-        public string AddressCustomer; 
-        public string PhoneCustomer;
-        public int IdWorker;
-        public string Tag; // opcional
+        public int IdCustomer { get; set; }
+        public string NameCustomer { get; set; }
+        public string LastCustomer { get; set; }
+        public string IdentifyCustomer { get; set; }
+        public string AddressCustomer { get; set; }
+        public string PhoneCustomer { get; set; }
+        public int? IdWorker { get; set; }
+
     }
 }

@@ -15,56 +15,118 @@ namespace AxiHotel.UI
     public partial class CustomersForm : Form
     {
         private readonly Worker _logged;
-        private readonly CustomersService _cust;
-        private readonly PlansService _plans;
-        private readonly BookingService _book;
+        private readonly CustomersService _custSrv;
+        private readonly PlansService _plansSrv;
+        private readonly BookingService _bookingSrv;
 
-        public CustomersForm(Worker logged, CustomersService c, PlansService p, BookingService b)
+        public CustomersForm(Worker logged, CustomersService custSrv, PlansService plansSrv, BookingService bookingSrv)
         {
             InitializeComponent();
-            _logged = logged; _cust = c; _plans = p; _book = b;
+            _logged = logged;
+            _custSrv = custSrv;
+            _plansSrv = plansSrv;
+            _bookingSrv = bookingSrv;
+
+          
+        }
+        
+
+        private void CustomersForm_Load(object sender, EventArgs e)
+        {
             LoadGrid();
         }
 
-        private void LoadGrid() { dgvCustomers.DataSource = _cust.Filter("").ToList(); }
-
-        private void txtBuscar_TextChanged(object s, EventArgs e)
+        private void LoadGrid(string filtro = "")
         {
-            dgvCustomers.DataSource = _cust.Filter(txtBuscar.Text).ToList();
+            try
+            {
+                var customers = string.IsNullOrWhiteSpace(filtro)
+                    ? _custSrv.GetAll()
+                    : _custSrv.Search(filtro);
+
+                dgvCustomers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvCustomers.DataSource = customers.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar clientes: {ex.Message}");
+            }
         }
 
-        private void btnRegistrar_Click(object s, EventArgs e)
+        private void txtBuscar_TextChanged(object sender, EventArgs e) { 
+    
+            LoadGrid(txtBuscar.Text.Trim());
+
+        }
+        private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            
+
+            try
+            {
+                var c = new Customer
+                {
+                    NameCustomer = txtNombre.Text.Trim(),
+                    LastCustomer = txtApellido.Text.Trim(),
+                    IdentifyCustomer = txtIdentificacion.Text.Trim(),
+                    AddressCustomer = txtDireccion.Text.Trim(),
+                    PhoneCustomer = txtTelefono.Text.Trim(),
+                  
+                };
+
+                int newId = _custSrv.Register(c);
+                MessageBox.Show($"Cliente registrado (ID {newId})");
+                LoadGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+
+
+            if (dgvCustomers.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un cliente");
+                return;
+            }
+
+            var id = (int)dgvCustomers.CurrentRow.Cells["IdCustomer"].Value;
             var c = new Customer
             {
-                NameCustomer = txtNombre.Text,
-                LastCustomer = txtApellido.Text,
-                IdentifyCustomer = txtIdentificacion.Text,
-                AddressCustomer = txtDireccion.Text,
-                PhoneCustomer = txtTelefono.Text,
-                IdWorker = _logged.IdWorker
+                IdCustomer = id,
+                NameCustomer = txtNombre.Text.Trim(),
+                LastCustomer = txtApellido.Text.Trim(),
+                IdentifyCustomer = txtIdentificacion.Text.Trim(),
+                AddressCustomer = txtDireccion.Text.Trim(),
+                PhoneCustomer = txtTelefono.Text.Trim(),
             };
-            var newId = _cust.Register(c);
-            MessageBox.Show($"Cliente registrado con Id {newId}");
+
+            _custSrv.Edit(c);
+            MessageBox.Show("Cliente actualizado.");
             LoadGrid();
         }
 
-        private void btnEditar_Click(object s, EventArgs e)
+        private void dgvCustomers_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvCustomers.CurrentRow == null) return;
-            var c = new Customer
-            {
-                IdCustomer = (int)dgvCustomers.CurrentRow.Cells["IdCustomer"].Value,
-                NameCustomer = txtNombre.Text,
-                LastCustomer = txtApellido.Text,
-                IdentifyCustomer = txtIdentificacion.Text,
-                AddressCustomer = txtDireccion.Text,
-                PhoneCustomer = txtTelefono.Text,
-                IdWorker = _logged.IdWorker
-            };
-            _cust.Edit(c); LoadGrid();
+
+            var id = (int)dgvCustomers.CurrentRow.Cells["IdCustomer"].Value;
+            var c = _custSrv.Get(id);
+
+            if (c == null) return;
+
+            txtNombre.Text = c.NameCustomer;
+            txtApellido.Text = c.LastCustomer;
+            txtIdentificacion.Text = c.IdentifyCustomer;
+            txtDireccion.Text = c.AddressCustomer;
+            txtTelefono.Text = c.PhoneCustomer;
         }
 
-
+    
     }
+
 }

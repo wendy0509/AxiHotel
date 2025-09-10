@@ -9,10 +9,12 @@ namespace AxiHotel.Data.Repositories
 {
     public interface ICustomerRepository
     {
-        int Add(Customer c);
-        void Update(Customer c);
+        IEnumerable<Customer> GetAll();
         Customer Get(int id);
-        IEnumerable<Customer> Search(string text);
-        void SetTag(int idCustomer, string tag);
+        IEnumerable<Customer> Search(string filtro);
+        int Add(Customer customer);
+        void Update(Customer customer);
+
     }
+
 }

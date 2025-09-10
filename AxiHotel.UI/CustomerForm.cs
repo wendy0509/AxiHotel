@@ -1,5 +1,6 @@
 ﻿using AxiHotel.Business;
 using AxiHotel.Data.Models;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace AxiHotel.UI
 {
-    public partial class CustomersForm : Form
+    public partial class CustomersForm : UIForm
     {
         private readonly Worker _logged;
         private readonly CustomersService _custSrv;
@@ -126,7 +127,15 @@ namespace AxiHotel.UI
             txtTelefono.Text = c.PhoneCustomer;
         }
 
-    
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
     }
 
 }

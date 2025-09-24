@@ -8,17 +8,17 @@ namespace AxiHotel.Data.Models
 {
     public class Booking
     {
-        public int IdBooking;
-        public DateTime DateStartBooking; 
-        public DateTime DateEndBooking;
-        public int HowManyPeopleBooking; 
-        public string DescriptionBooking; 
-        public double PriceBooking;
-        public string StatusPrice;
-        public int IdCustomer;
-        public int IdRoom;
-        public int? IdPromotion;
-        public int IdPlan;
-        public int IdWorker;
+        public int IdBooking { get; set; }
+        public DateTime DateStartBooking { get; set; }
+        public DateTime DateEndBooking { get; set; }
+        public int HowManyPeopleBooking { get; set; }
+        public string DescriptionBooking { get; set; }
+        public double PriceBooking { get; set; }
+        public string StatusPrice { get; set; }
+        public int IdCustomer { get; set; }
+        public int IdRoom { get; set; }
+        public int? IdPromotion { get; set; }
+        public int? IdPlan { get; set; }
+        public int IdWorker { get; set; }
     }
 }

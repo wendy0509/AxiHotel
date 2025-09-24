@@ -1,6 +1,7 @@
 ﻿using AxiHotel.Business;
 using AxiHotel.Data.Models;
 using AxiHotel.Data.Repositories;
+using AxiHotel.Data.Repositories.xi.hotel.data.repositories;
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,9 @@ namespace AxiHotel.UI
 
         private void btnReservas_Click(object sender, EventArgs e)
         {
+            var bookingSrv = new BookingService(new BookingRepository());
+            var form = new BookingForm(bookingSrv, false); // false = recepcionista
+            form.ShowDialog();
 
         }
 

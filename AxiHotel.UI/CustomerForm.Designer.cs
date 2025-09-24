@@ -57,6 +57,7 @@
             this.label6.Size = new System.Drawing.Size(67, 19);
             this.label6.TabIndex = 10;
             this.label6.Text = "Dirección";
+ 
             // 
             // label5
             // 
@@ -146,6 +147,7 @@
             this.txtIdentificacion.Size = new System.Drawing.Size(174, 26);
             this.txtIdentificacion.TabIndex = 2;
             this.txtIdentificacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtIdentificacion.TextChanged += new System.EventHandler(this.txtIdentificacion_TextChanged);
             // 
             // txtApellido
             // 

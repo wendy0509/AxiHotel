@@ -136,6 +136,13 @@ namespace AxiHotel.UI
         {
             Application.Restart();
         }
+
+        private void txtIdentificacion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 
 }

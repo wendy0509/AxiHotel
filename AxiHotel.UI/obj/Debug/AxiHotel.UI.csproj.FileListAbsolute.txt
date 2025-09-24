@@ -22,3 +22,4 @@ C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.UI\obj\Debug\AxiHotel.UI.csp
 C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.UI\obj\Debug\AxiHotel.FE511F1E.Up2Date
 C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.UI\obj\Debug\AxiHotel.UI.exe
 C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.UI\obj\Debug\AxiHotel.UI.pdb
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.UI\obj\Debug\AxiHotel.UI.BookingForm.resources

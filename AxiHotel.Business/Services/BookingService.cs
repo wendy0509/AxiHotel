@@ -11,26 +11,49 @@ namespace AxiHotel.Business
     public class BookingService
     {
         private readonly IBookingRepository _repo;
-        public BookingService(IBookingRepository repo) { _repo = repo; }
-        public int AssignPlanToCustomer(int idCustomer, int idPlan, int idRoom, DateTime start, DateTime end,
-          int people, string notes, double price, string statusPrice, int idReceptionist)
+
+        public BookingService(IBookingRepository repo)
         {
-            if (end <= start) throw new ArgumentException("La fecha fin debe ser mayor a inicio");
-            var b = new Booking
-            {
-                DateStartBooking = start,
-                DateEndBooking = end,
-                HowManyPeopleBooking = people,
-                DescriptionBooking = notes,
-                PriceBooking = price,
-                StatusPrice = statusPrice,
-                IdCustomer = idCustomer,
-                IdRoom = idRoom,
-                IdPromotion = null,
-                IdPlan = idPlan,
-                IdWorker = idReceptionist
-            };
-            return _repo.Create(b);
+            _repo = repo;
         }
+
+        public bool ClienteExiste(string identificacion) => _repo.ClienteExiste(identificacion);
+
+        // ✅ Crear reserva
+        public int CrearReserva(Booking booking)
+        {
+            if (booking.DateStartBooking >= booking.DateEndBooking)
+                throw new ArgumentException("La fecha de entrada debe ser anterior a la fecha de salida.");
+
+            if (!_repo.HabitacionDisponible(booking.IdRoom, booking.DateStartBooking, booking.DateEndBooking))
+                throw new ArgumentException("La habitación ya está reservada en esas fechas.");
+
+            if (booking.HowManyPeopleBooking <= 0)
+                throw new ArgumentException("La cantidad de personas debe ser mayor que 0.");
+
+            if (string.IsNullOrWhiteSpace(booking.StatusPrice))
+                booking.StatusPrice = "Pendiente";
+
+            return _repo.Add(booking);
+        }
+
+
+        // ✅ Editar reserva
+        public int EditarReserva(Booking booking)
+        {
+            if (booking.DateStartBooking >= booking.DateEndBooking)
+                throw new ArgumentException("La fecha de entrada debe ser anterior a la fecha de salida.");
+
+
+            return _repo.Update(booking);
+        }
+
+
+        public int EliminarReserva(int idBooking) => _repo.Delete(idBooking);
+
+        public IEnumerable<Booking> ObtenerTodas() => _repo.GetAll();
+
+        public Booking Get(int id) => _repo.Get(id);
     }
+
 }

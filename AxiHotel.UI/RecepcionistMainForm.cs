@@ -19,20 +19,46 @@ namespace AxiHotel.UI
     {
         private readonly Worker _logged;
 
-
-        // 🔹 Constructor que recibe Worker y connectionString
-        public RecepcionistMainForm()
+        // Constructor que recibe el trabajador logueado
+        public RecepcionistMainForm(Worker logged)
         {
             InitializeComponent();
+            _logged = logged;
+            // Validación de rol para mostrar/ocultar botones
+            if (_logged.JobTitle == "Administrador")
+            {
+                // 🔓 Muestra todo si es administrador
+                btnHabitaciones.Visible = true;
+                btnClientes.Visible = true;
+                btnReservas.Visible = true;
+                btnTrabajadores.Visible = true;
+                btnPromociones.Visible = true;
+                btnPlanes.Visible = true;
 
+                btnPlanes2.Visible = false;
+                btnPromociones2.Visible = false;
+            }
+            else if (_logged.JobTitle == "Recepcionista")
+            {
+                // 🔐 Solo muestra lo que el recepcionista puede usar
+                btnHabitaciones.Visible = true;
+                btnClientes.Visible = true;
+                btnReservas.Visible = true;
+                btnPlanes2.Visible = true;
+                btnPromociones2.Visible = true;
+
+                // 🔒 Oculta lo que no debe ver
+                btnTrabajadores.Visible = false;
+                btnPromociones.Visible = false;
+                btnPlanes.Visible = false;
+            }
 
         }
-
         private void btnHabitaciones_Click(object sender, EventArgs e)
         {
             var roomsSrv = new RoomsService(new RoomRepository());
             var form = new RoomsForm(roomsSrv, false); // false porque es recepcionista
-            form.ShowDialog();
+            form.Show();
 
 
         }
@@ -42,20 +68,45 @@ namespace AxiHotel.UI
             var custSrv = new CustomersService(new CustomerRepository());
             var plansSrv = new PlansService(new PlanRepository());
             var bookSrv = new BookingService(new BookingRepository());
-            new CustomersForm(_logged, custSrv, plansSrv, bookSrv).ShowDialog();
+            new CustomersForm(_logged, custSrv, plansSrv, bookSrv).Show();
         }
 
         private void btnReservas_Click(object sender, EventArgs e)
         {
             var bookingSrv = new BookingService(new BookingRepository());
             var form = new BookingForm(bookingSrv, false); // false = recepcionista
-            form.ShowDialog();
+            form.Show();
 
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Application.Restart(); // reinicia la app y vuelve al login
+        }
+
+        private void btnPromociones_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPromociones2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPlanes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTrabajadores_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPlanes2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

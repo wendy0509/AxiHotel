@@ -14,6 +14,7 @@ namespace AxiHotel.Data.Repositories
         IEnumerable<Customer> Search(string filtro);
         int Add(Customer customer);
         void Update(Customer customer);
+        void Delete(int id);
 
     }
 

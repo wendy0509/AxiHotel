@@ -27,5 +27,9 @@ namespace AxiHotel.Business
         public int Register(Customer c) => _repo.Add(c);
 
         public void Edit(Customer c) => _repo.Update(c);
+        public void Delete(int id)
+        {
+            _repo.Delete(id);
+        }
     }
 }

@@ -31,6 +31,21 @@ namespace AxiHotel.Business
             if (!ValidHousekeeping.Contains(housekeepingStatus)) throw new ArgumentException("Estado de limpieza inválido");
             _repo.UpdateStatusCleaning(idRoom, housekeepingStatus);
         }
+        public IEnumerable<Room> Search(string filtro)
+        {
+            return _repo.Search(filtro);
+        }
+
+        public int Add(Room room)
+        {
+            return _repo.Add(room);
+        }
+
+        public void Delete(int id)
+        {
+            _repo.Delete(id);
+        }
+
 
     }
 }

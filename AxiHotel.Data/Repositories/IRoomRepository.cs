@@ -14,6 +14,10 @@ namespace AxiHotel.Data.Repositories
         void UpdateStatus(int idRoom, string roomStatus);
 
         void UpdateStatusCleaning(int idRoom, string housekeepingStatus);
+        int Add(Room room);
+        void Delete(int idRoom);
+        IEnumerable<Room> Search(string filtro);
+
     }
 
 }

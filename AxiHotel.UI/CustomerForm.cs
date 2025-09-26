@@ -28,7 +28,27 @@ namespace AxiHotel.UI
             _plansSrv = plansSrv;
             _bookingSrv = bookingSrv;
 
-          
+            // 🔹 Botones de agregar/eliminar visibles solo para admin
+            if (SessionManager.CurrentWorker.JobTitle == "Administrador")
+            {
+                btnRegistrar.Visible = true;
+                btnDelete.Visible = true;
+                btnEditar.Visible = true;
+
+                btnEditar2.Visible = false;
+                btnRegistrar2.Visible = false;
+              
+            }
+            else
+            {
+                btnEditar2.Visible = true;
+                btnRegistrar2.Visible = true;
+                btnDelete.Visible = false;
+                btnRegistrar.Visible = false;
+                btnEditar.Visible = false;
+
+            }
+
         }
         
 
@@ -60,9 +80,7 @@ namespace AxiHotel.UI
 
         }
         private void btnRegistrar_Click(object sender, EventArgs e)
-        {
-            
-
+        {  
             try
             {
                 var c = new Customer
@@ -142,7 +160,67 @@ namespace AxiHotel.UI
 
         }
 
+        private void btnRegistrar2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var c = new Customer
+                {
+                    NameCustomer = txtNombre.Text.Trim(),
+                    LastCustomer = txtApellido.Text.Trim(),
+                    IdentifyCustomer = txtIdentificacion.Text.Trim(),
+                    AddressCustomer = txtDireccion.Text.Trim(),
+                    PhoneCustomer = txtTelefono.Text.Trim(),
 
+                };
+
+                int newId = _custSrv.Register(c);
+                MessageBox.Show($"Cliente registrado (ID {newId})");
+                LoadGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+
+        private void btnEditar2_Click(object sender, EventArgs e)
+        {
+
+            if (dgvCustomers.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un cliente");
+                return;
+            }
+
+            var id = (int)dgvCustomers.CurrentRow.Cells["IdCustomer"].Value;
+            var c = new Customer
+            {
+                IdCustomer = id,
+                NameCustomer = txtNombre.Text.Trim(),
+                LastCustomer = txtApellido.Text.Trim(),
+                IdentifyCustomer = txtIdentificacion.Text.Trim(),
+                AddressCustomer = txtDireccion.Text.Trim(),
+                PhoneCustomer = txtTelefono.Text.Trim(),
+            };
+
+            _custSrv.Edit(c);
+            MessageBox.Show("Cliente actualizado.");
+            LoadGrid();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvCustomers.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una habitación");
+                return;
+            }
+
+            var id = (int)dgvCustomers.CurrentRow.Cells["IdCustomer"].Value;
+            _custSrv.Delete(id);
+            LoadGrid();
+        }
     }
 
 }

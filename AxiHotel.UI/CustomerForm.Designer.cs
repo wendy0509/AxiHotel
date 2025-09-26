@@ -46,6 +46,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnBack = new Sunny.UI.UIButton();
             this.btnLogout = new Sunny.UI.UIButton();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEditar2 = new System.Windows.Forms.Button();
+            this.btnRegistrar2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +60,6 @@
             this.label6.Size = new System.Drawing.Size(67, 19);
             this.label6.TabIndex = 10;
             this.label6.Text = "Dirección";
- 
             // 
             // label5
             // 
@@ -100,7 +102,7 @@
             this.btnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
             this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRegistrar.Location = new System.Drawing.Point(284, 565);
+            this.btnRegistrar.Location = new System.Drawing.Point(181, 565);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(111, 48);
             this.btnRegistrar.TabIndex = 3;
@@ -113,7 +115,7 @@
             this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
             this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEditar.Location = new System.Drawing.Point(445, 565);
+            this.btnEditar.Location = new System.Drawing.Point(364, 565);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(111, 48);
             this.btnEditar.TabIndex = 4;
@@ -246,11 +248,53 @@
             this.btnLogout.TipsForeColor = System.Drawing.Color.Black;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDelete.Location = new System.Drawing.Point(548, 565);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(111, 48);
+            this.btnDelete.TabIndex = 17;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEditar2
+            // 
+            this.btnEditar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
+            this.btnEditar2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditar2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEditar2.Location = new System.Drawing.Point(455, 565);
+            this.btnEditar2.Name = "btnEditar2";
+            this.btnEditar2.Size = new System.Drawing.Size(111, 48);
+            this.btnEditar2.TabIndex = 18;
+            this.btnEditar2.Text = "Editar";
+            this.btnEditar2.UseVisualStyleBackColor = false;
+            this.btnEditar2.Click += new System.EventHandler(this.btnEditar2_Click);
+            // 
+            // btnRegistrar2
+            // 
+            this.btnRegistrar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
+            this.btnRegistrar2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegistrar2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRegistrar2.Location = new System.Drawing.Point(267, 565);
+            this.btnRegistrar2.Name = "btnRegistrar2";
+            this.btnRegistrar2.Size = new System.Drawing.Size(111, 48);
+            this.btnRegistrar2.TabIndex = 19;
+            this.btnRegistrar2.Text = "Registrar";
+            this.btnRegistrar2.UseVisualStyleBackColor = false;
+            this.btnRegistrar2.Click += new System.EventHandler(this.btnRegistrar2_Click);
+            // 
             // CustomersForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(160)))), ((int)(((byte)(120)))));
             this.ClientSize = new System.Drawing.Size(800, 640);
+            this.Controls.Add(this.btnRegistrar2);
+            this.Controls.Add(this.btnEditar2);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnRegistrar);
@@ -300,5 +344,8 @@
         private System.Windows.Forms.Label label6;
         private Sunny.UI.UIButton btnBack;
         private Sunny.UI.UIButton btnLogout;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnEditar2;
+        private System.Windows.Forms.Button btnRegistrar2;
     }
 }

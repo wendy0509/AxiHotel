@@ -89,5 +89,71 @@ namespace AxiHotel.Data.Repositories
                 cmd.ExecuteNonQuery();
             }
         }
+        public IEnumerable<Room> Search(string filtro)
+        {
+            var list = new List<Room>();
+
+            using (var cn = Db.Open())
+            using (var cmd = new SqlCommand(@"SELECT IdRoom, DescriptionRoom, RoomStatus, 
+                                             HousekeepingStatus, TypeRoom, IdWorker 
+                                      FROM Room
+                                      WHERE DescriptionRoom LIKE @filtro 
+                                         OR TypeRoom LIKE @filtro
+                                         OR RoomStatus LIKE @filtro 
+                                         OR HousekeepingStatus LIKE @filtro", cn))
+            {
+                cmd.Parameters.AddWithValue("@filtro", "%" + filtro + "%");
+
+                using (var rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        list.Add(new Room
+                        {
+                            IdRoom = (int)rd["IdRoom"],
+                            DescriptionRoom = rd["DescriptionRoom"].ToString(),
+                            RoomStatus = rd["RoomStatus"].ToString(),
+                            HousekeepingStatus = rd["HousekeepingStatus"].ToString(),
+                            TypeRoom = rd["TypeRoom"].ToString(),
+                            IdWorker = rd["IdWorker"] == DBNull.Value ? null : (int?)Convert.ToInt32(rd["IdWorker"])
+                        });
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        public int Add(Room room)
+        {
+            using (var cn = Db.Open())
+
+            using (var cmd = new SqlCommand(@"INSERT INTO Room(TypeRoom, DescriptionRoom, RoomStatus, HousekeepingStatus) 
+            OUTPUT INSERTED.IdRoom
+            VALUES (@type, @desc, @status, @housekeeping)", cn))
+            {
+                cmd.Parameters.AddWithValue("@type", room.TypeRoom);
+                cmd.Parameters.AddWithValue("@desc", room.DescriptionRoom);
+                cmd.Parameters.AddWithValue("@status", room.RoomStatus);
+                cmd.Parameters.AddWithValue("@housekeeping", room.HousekeepingStatus);
+
+                return (int)cmd.ExecuteScalar();
+            }
+
+        }
+
+        public void Delete(int id)
+        {
+            using (var cn = Db.Open())
+
+            using (var cmd = new SqlCommand(@"DELETE FROM Room WHERE IdRoom=@id", cn))
+            { 
+               
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+                
+            }
+        }
+
     }
 }

@@ -31,11 +31,11 @@ namespace AxiHotel.UI
 
             if (role.Contains("admin") || role.Contains("administrador"))
             {
-                Application.Run(new AdminForm());
+                Application.Run(new RecepcionistMainForm(SessionManager.CurrentWorker));
             }
             else if (role.Contains("recep") || role.Contains("recepcionista"))
             {
-                Application.Run(new RecepcionistMainForm());
+                Application.Run(new RecepcionistMainForm(SessionManager.CurrentWorker));
 
             }
             else if (role.Contains("serv") || role.Contains("servicio"))

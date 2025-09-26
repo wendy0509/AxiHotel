@@ -154,4 +154,17 @@ VALUES
 GO
 
 
-select*from room;
+select*from booking;
+ALTER TABLE Booking
+ALTER COLUMN IdPlan INT NULL;
+
+ALTER TABLE Booking
+ALTER COLUMN IdPromotion INT NULL;
+
+ALTER TABLE Booking
+ADD CONSTRAINT FK_Booking_IdPlan
+FOREIGN KEY (IdPlan) REFERENCES HotelPlans(IdPlan);
+
+ALTER TABLE Booking
+ADD CONSTRAINT FK_Booking_IdPromocion
+FOREIGN KEY (IdPromotion) REFERENCES Promotions(IdPromotion);

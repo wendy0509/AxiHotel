@@ -34,6 +34,11 @@
             this.btnReservas = new Sunny.UI.UIButton();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.btnLogout = new Sunny.UI.UIButton();
+            this.btnPromociones2 = new System.Windows.Forms.Button();
+            this.btnPromociones = new System.Windows.Forms.Button();
+            this.btnPlanes2 = new System.Windows.Forms.Button();
+            this.btnPlanes = new System.Windows.Forms.Button();
+            this.btnTrabajadores = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnHabitaciones
@@ -45,7 +50,7 @@
             this.btnHabitaciones.ForeColor = System.Drawing.Color.White;
             this.btnHabitaciones.Location = new System.Drawing.Point(267, 140);
             this.btnHabitaciones.Name = "btnHabitaciones";
-            this.btnHabitaciones.Size = new System.Drawing.Size(270, 305);
+            this.btnHabitaciones.Size = new System.Drawing.Size(270, 174);
             this.btnHabitaciones.TabIndex = 0;
             this.btnHabitaciones.Text = "Gestionar Habitaciones";
             this.btnHabitaciones.UseVisualStyleBackColor = false;
@@ -60,7 +65,7 @@
             this.btnClientes.ForeColor = System.Drawing.Color.White;
             this.btnClientes.Location = new System.Drawing.Point(3, 140);
             this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(258, 305);
+            this.btnClientes.Size = new System.Drawing.Size(258, 174);
             this.btnClientes.TabIndex = 1;
             this.btnClientes.Text = "Gestionar Clientes";
             this.btnClientes.UseVisualStyleBackColor = false;
@@ -83,7 +88,7 @@
             this.btnReservas.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.btnReservas.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
             this.btnReservas.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
-            this.btnReservas.Size = new System.Drawing.Size(254, 305);
+            this.btnReservas.Size = new System.Drawing.Size(254, 174);
             this.btnReservas.TabIndex = 2;
             this.btnReservas.Text = "Gestionar Reservas";
             this.btnReservas.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
@@ -124,11 +129,91 @@
             this.btnLogout.TipsForeColor = System.Drawing.Color.Black;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // btnPromociones2
+            // 
+            this.btnPromociones2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
+            this.btnPromociones2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPromociones2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPromociones2.Font = new System.Drawing.Font("Tw Cen MT", 18F, System.Drawing.FontStyle.Italic);
+            this.btnPromociones2.ForeColor = System.Drawing.Color.White;
+            this.btnPromociones2.Location = new System.Drawing.Point(407, 329);
+            this.btnPromociones2.Name = "btnPromociones2";
+            this.btnPromociones2.Size = new System.Drawing.Size(270, 174);
+            this.btnPromociones2.TabIndex = 17;
+            this.btnPromociones2.Text = "Promociones";
+            this.btnPromociones2.UseVisualStyleBackColor = false;
+            this.btnPromociones2.Click += new System.EventHandler(this.btnPromociones2_Click);
+            // 
+            // btnPromociones
+            // 
+            this.btnPromociones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
+            this.btnPromociones.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPromociones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPromociones.Font = new System.Drawing.Font("Tw Cen MT", 18F, System.Drawing.FontStyle.Italic);
+            this.btnPromociones.ForeColor = System.Drawing.Color.White;
+            this.btnPromociones.Location = new System.Drawing.Point(543, 329);
+            this.btnPromociones.Name = "btnPromociones";
+            this.btnPromociones.Size = new System.Drawing.Size(254, 174);
+            this.btnPromociones.TabIndex = 18;
+            this.btnPromociones.Text = "Promociones";
+            this.btnPromociones.UseVisualStyleBackColor = false;
+            this.btnPromociones.Click += new System.EventHandler(this.btnPromociones_Click);
+            // 
+            // btnPlanes2
+            // 
+            this.btnPlanes2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
+            this.btnPlanes2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPlanes2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPlanes2.Font = new System.Drawing.Font("Tw Cen MT", 18F, System.Drawing.FontStyle.Italic);
+            this.btnPlanes2.ForeColor = System.Drawing.Color.White;
+            this.btnPlanes2.Location = new System.Drawing.Point(131, 329);
+            this.btnPlanes2.Name = "btnPlanes2";
+            this.btnPlanes2.Size = new System.Drawing.Size(270, 174);
+            this.btnPlanes2.TabIndex = 19;
+            this.btnPlanes2.Text = "Planes";
+            this.btnPlanes2.UseVisualStyleBackColor = false;
+            this.btnPlanes2.Click += new System.EventHandler(this.btnPlanes2_Click);
+            // 
+            // btnPlanes
+            // 
+            this.btnPlanes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
+            this.btnPlanes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPlanes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPlanes.Font = new System.Drawing.Font("Tw Cen MT", 18F, System.Drawing.FontStyle.Italic);
+            this.btnPlanes.ForeColor = System.Drawing.Color.White;
+            this.btnPlanes.Location = new System.Drawing.Point(267, 329);
+            this.btnPlanes.Name = "btnPlanes";
+            this.btnPlanes.Size = new System.Drawing.Size(270, 174);
+            this.btnPlanes.TabIndex = 20;
+            this.btnPlanes.Text = "Planes";
+            this.btnPlanes.UseVisualStyleBackColor = false;
+            this.btnPlanes.Click += new System.EventHandler(this.btnPlanes_Click);
+            // 
+            // btnTrabajadores
+            // 
+            this.btnTrabajadores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
+            this.btnTrabajadores.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTrabajadores.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTrabajadores.Font = new System.Drawing.Font("Tw Cen MT", 18F, System.Drawing.FontStyle.Italic);
+            this.btnTrabajadores.ForeColor = System.Drawing.Color.White;
+            this.btnTrabajadores.Location = new System.Drawing.Point(3, 329);
+            this.btnTrabajadores.Name = "btnTrabajadores";
+            this.btnTrabajadores.Size = new System.Drawing.Size(258, 174);
+            this.btnTrabajadores.TabIndex = 21;
+            this.btnTrabajadores.Text = "Trabajadores";
+            this.btnTrabajadores.UseVisualStyleBackColor = false;
+            this.btnTrabajadores.Click += new System.EventHandler(this.btnTrabajadores_Click);
+            // 
             // RecepcionistMainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(160)))), ((int)(((byte)(120)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 523);
+            this.Controls.Add(this.btnTrabajadores);
+            this.Controls.Add(this.btnPlanes);
+            this.Controls.Add(this.btnPlanes2);
+            this.Controls.Add(this.btnPromociones);
+            this.Controls.Add(this.btnPromociones2);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.btnReservas);
@@ -138,7 +223,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RecepcionistMainForm";
             this.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(36)))), ((int)(((byte)(33)))));
-            this.Text = "Recepcionista";
+            this.Text = "Menu Principal";
             this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(36)))), ((int)(((byte)(33)))));
             this.TitleFont = new System.Drawing.Font("Poor Richard", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
@@ -153,5 +238,10 @@
         private Sunny.UI.UIButton btnReservas;
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UIButton btnLogout;
+        private System.Windows.Forms.Button btnPromociones2;
+        private System.Windows.Forms.Button btnPromociones;
+        private System.Windows.Forms.Button btnPlanes2;
+        private System.Windows.Forms.Button btnPlanes;
+        private System.Windows.Forms.Button btnTrabajadores;
     }
 }

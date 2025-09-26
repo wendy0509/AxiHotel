@@ -56,5 +56,102 @@ namespace AxiHotel.Data.Repositories
             //Si no se encontró ningún usuario con ese UserWorker, devuelve null
             return null;
         }
+        public IEnumerable<Worker> GetAll()
+        {
+            var list = new List<Worker>();
+
+            using (var cn = Db.Open())
+            using (var cmd = new SqlCommand("SELECT * FROM Worker", cn))
+            using (var dr = cmd.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+                    list.Add(new Worker
+                    {
+                        IdWorker = (int)dr["IdWorker"],
+                        FullNameWorker = dr["FullNameWorker"].ToString(),
+                        IdentifyWorker = dr["IdentifyWorker"].ToString(),
+                        AddressWorker = dr["AddressWorker"].ToString(),
+                        PhoneWorker = dr["PhoneWorker"].ToString(),
+                        UserWorker = dr["UserWorker"].ToString(),
+                        PasswordWorker = dr["PasswordWorker"].ToString(),
+                        JobTitle = dr["JobTitle"].ToString()
+                    });
+                }
+            }
+            return list;
+        }
+
+        public void Add(Worker worker)
+        {
+            using (var cn = Db.Open())
+            using (var cmd = new SqlCommand("INSERT INTO Worker (FullNameWorker, IdentifyWorker, AddressWorker, PhoneWorker, UserWorker, PasswordWorker, JobTitle) VALUES (@FullNameWorker, @IdentifyWorker, @AddressWorker, @PhoneWorker, @UserWorker, @PasswordWorker, @JobTitle)", cn))
+            {
+                cmd.Parameters.AddWithValue("@FullNameWorker", worker.FullNameWorker);
+                cmd.Parameters.AddWithValue("@IdentifyWorker", worker.IdentifyWorker);
+                cmd.Parameters.AddWithValue("@AddressWorker", worker.AddressWorker);
+                cmd.Parameters.AddWithValue("@PhoneWorker", worker.PhoneWorker);
+                cmd.Parameters.AddWithValue("@UserWorker", worker.UserWorker);
+                cmd.Parameters.AddWithValue("@PasswordWorker", worker.PasswordWorker);
+                cmd.Parameters.AddWithValue("@JobTitle", worker.JobTitle);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void Update(Worker worker)
+        {
+            using (var cn = Db.Open())
+            using (var cmd = new SqlCommand("UPDATE Worker SET FullNameWorker=@FullNameWorker, IdentifyWorker=@IdentifyWorker, AddressWorker=@AddressWorker, PhoneWorker=@PhoneWorker, UserWorker=@UserWorker, PasswordWorker=@PasswordWorker, JobTitle=@JobTitle WHERE IdWorker=@IdWorker", cn))
+            {
+                cmd.Parameters.AddWithValue("@IdWorker", worker.IdWorker);
+                cmd.Parameters.AddWithValue("@FullNameWorker", worker.FullNameWorker);
+                cmd.Parameters.AddWithValue("@IdentifyWorker", worker.IdentifyWorker);
+                cmd.Parameters.AddWithValue("@AddressWorker", worker.AddressWorker);
+                cmd.Parameters.AddWithValue("@PhoneWorker", worker.PhoneWorker);
+                cmd.Parameters.AddWithValue("@UserWorker", worker.UserWorker);
+                cmd.Parameters.AddWithValue("@PasswordWorker", worker.PasswordWorker);
+                cmd.Parameters.AddWithValue("@JobTitle", worker.JobTitle);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void Delete(int idWorker)
+        {
+            using (var cn = Db.Open())
+            using (var cmd = new SqlCommand("DELETE FROM Worker WHERE IdWorker=@IdWorker", cn))
+            {
+                cmd.Parameters.AddWithValue("@IdWorker", idWorker);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public IEnumerable<Worker> Search(string keyword)
+        {
+            var list = new List<Worker>();
+
+            using (var cn = Db.Open())
+            using (var cmd = new SqlCommand("SELECT * FROM Worker WHERE FullNameWorker LIKE @keyword OR UserWorker LIKE @keyword OR JobTitle LIKE @keyword", cn))
+            {
+                cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        list.Add(new Worker
+                        {
+                            IdWorker = (int)dr["IdWorker"],
+                            FullNameWorker = dr["FullNameWorker"].ToString(),
+                            IdentifyWorker = dr["IdentifyWorker"].ToString(),
+                            AddressWorker = dr["AddressWorker"].ToString(),
+                            PhoneWorker = dr["PhoneWorker"].ToString(),
+                            UserWorker = dr["UserWorker"].ToString(),
+                            PasswordWorker = dr["PasswordWorker"].ToString(),
+                            JobTitle = dr["JobTitle"].ToString()
+                        });
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

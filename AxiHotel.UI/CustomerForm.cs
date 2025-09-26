@@ -17,15 +17,14 @@ namespace AxiHotel.UI
     {
         private readonly Worker _logged;
         private readonly CustomersService _custSrv;
-        private readonly PlansService _plansSrv;
+    
         private readonly BookingService _bookingSrv;
 
-        public CustomersForm(Worker logged, CustomersService custSrv, PlansService plansSrv, BookingService bookingSrv)
+        public CustomersForm(Worker logged, CustomersService custSrv, BookingService bookingSrv)
         {
             InitializeComponent();
             _logged = logged;
             _custSrv = custSrv;
-            _plansSrv = plansSrv;
             _bookingSrv = bookingSrv;
 
             // 🔹 Botones de agregar/eliminar visibles solo para admin

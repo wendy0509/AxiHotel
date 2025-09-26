@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace AxiHotel.Data.Repositories
@@ -147,11 +148,39 @@ namespace AxiHotel.Data.Repositories
             using (var cn = Db.Open())
 
             using (var cmd = new SqlCommand(@"DELETE FROM Room WHERE IdRoom=@id", cn))
-            { 
-               
+            {
+
                 cmd.Parameters.AddWithValue("@id", id);
-                cmd.ExecuteNonQuery();
-                
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Habitación Eliminada");
+                }
+                catch (SqlException ex)
+                {
+                    // Verificamos si el error es por violación de foreign key
+                    if (ex.Number == 547) // 547 = Foreign Key violation en SQL Server
+                    {
+                        MessageBox.Show(
+                            "La Habitación tiene reservas asociadas y no puede ser eliminada.",
+                            "Error de Eliminación",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                    }
+                    else
+                    {
+                        // Cualquier otro error lo mostramos normal
+                        MessageBox.Show(
+                            "Ocurrió un error al intentar eliminar el cliente: " + ex.Message,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                    }
+
+                }
             }
         }
 

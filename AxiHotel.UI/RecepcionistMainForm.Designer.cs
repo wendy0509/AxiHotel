@@ -98,11 +98,11 @@
             // 
             this.uiLabel1.Font = new System.Drawing.Font("Poor Richard", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uiLabel1.ForeColor = System.Drawing.Color.White;
-            this.uiLabel1.Location = new System.Drawing.Point(261, 68);
+            this.uiLabel1.Location = new System.Drawing.Point(217, 68);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(367, 35);
             this.uiLabel1.TabIndex = 3;
-            this.uiLabel1.Text = "BIENVENIDO DAVID ";
+            this.uiLabel1.Click += new System.EventHandler(this.uiLabel1_Click);
             // 
             // btnLogout
             // 

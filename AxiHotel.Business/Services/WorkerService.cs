@@ -36,5 +36,10 @@ namespace AxiHotel.Business
             return ok ? user : null;
         }
 
+        public IEnumerable<Worker> GetAll() => _repo.GetAll();
+        public void Add(Worker worker) => _repo.Add(worker);
+        public void Update(Worker worker) => _repo.Update(worker);
+        public void Delete(int idWorker) => _repo.Delete(idWorker);
+        public IEnumerable<Worker> Search(string keyword) => _repo.Search(keyword);
     }
 }

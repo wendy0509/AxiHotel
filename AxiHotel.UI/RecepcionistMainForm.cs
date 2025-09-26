@@ -67,9 +67,8 @@ namespace AxiHotel.UI
         private void btnClientes_Click(object s, EventArgs e)
         {
             var custSrv = new CustomersService(new CustomerRepository());
-            var plansSrv = new PlansService(new PlanRepository());
             var bookSrv = new BookingService(new BookingRepository());
-            new CustomersForm(_logged, custSrv, plansSrv, bookSrv).Show();
+            new CustomersForm(_logged, custSrv, bookSrv).Show();
         }
 
         private void btnReservas_Click(object sender, EventArgs e)
@@ -118,16 +117,49 @@ namespace AxiHotel.UI
         private void btnPlanes_Click(object sender, EventArgs e)
         {
 
+            // Crear el servicio de planes
+            var planSrv = new PlanService();
+
+            // Crear el formulario de planes y pasarle el servicio si lo necesitas
+            var form = new PlanForm();
+
+            // Mostrar el formulario
+            form.Show();
         }
 
         private void btnTrabajadores_Click(object sender, EventArgs e)
         {
+            // Crear repositorio y servicio
+            var workersRepo = new WorkerRepository();
+            var workersSrv = new WorkerService();
 
+            // Crear formulario de trabajadores y pasarle el servicio
+            var form = new WorkerForm();
+
+            // Mostrar formulario (no bloquea el menú principal)
+            form.Show();
         }
 
         private void btnPlanes2_Click(object sender, EventArgs e)
         {
 
+            // Crear el servicio de planes
+            var planSrv = new PlanService();
+
+            // Crear el formulario de planes y pasarle el servicio si lo necesitas
+            var form = new PlanForm();
+
+            // Mostrar el formulario
+            form.Show();
+
+        }
+
+        private void uiLabel1_Click(object sender, EventArgs e)
+        {
+            if (SessionManager.CurrentWorker != null)
+            {
+                uiLabel1.Text = $"Bienvenido, {SessionManager.CurrentWorker.FullNameWorker}";
+            }
         }
     }
 }

@@ -210,7 +210,6 @@ namespace AxiHotel.UI
 
             var id = (int)dgvRooms.CurrentRow.Cells["IdRoom"].Value;
             _srv.Delete(id);
-            MessageBox.Show("Habitación eliminada");
             LoadData();
         }
 

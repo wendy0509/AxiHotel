@@ -26,15 +26,46 @@ namespace AxiHotel.UI
             _service = service;
             _esAdmin = esAdmin;
             CargarReservas();
+            // 🔹 Botones de agregar/eliminar visibles solo para admin
+            if (SessionManager.CurrentWorker.JobTitle == "Administrador")
+            {
+                btnRegistrar.Visible = true;
+                btnDelete.Visible = true;
+                btnEditar.Visible = true;
+
+                btnEditar2.Visible = false;
+                btnRegistrar2.Visible = false;
+
+            }
+            else
+            {
+                btnEditar2.Visible = true;
+                btnRegistrar2.Visible = true;
+                btnDelete.Visible = false;
+                btnRegistrar.Visible = false;
+                btnEditar.Visible = false;
+
+            }
+
         }
 
 
         // ✅ Método para refrescar la lista de reservas en el DataGridView
-        private void CargarReservas()
+        private void CargarReservas(string filtro ="" )
         {
-            var reservas = _service.ObtenerTodas().ToList();
-            dgvBookings.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvBookings.DataSource = reservas;
+            try
+            {
+                var reservas = string.IsNullOrWhiteSpace(filtro) ?
+                              _service.ObtenerTodas().ToList():
+                              _service.SearchBookings(filtro);
+                dgvBookings.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvBookings.DataSource = reservas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar habitaciones: {ex.Message}");
+            }
+
         }
 
         // ✅ Botón para eliminar reserva seleccionada
@@ -161,8 +192,93 @@ namespace AxiHotel.UI
         {
             this.Close();
         }
-       
 
-       
+        private void btnRegistrar2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var booking = new Booking
+                {
+                    IdWorker = int.Parse(txtIdWorker.Text),
+                    DateStartBooking = dtpInicio.Value,
+                    DateEndBooking = dtpFin.Value,
+                    HowManyPeopleBooking = (int)nudPersonas.Value,
+                    DescriptionBooking = txtDescripcion.Text,
+                    PriceBooking = double.Parse(txtPrecio.Text),
+                    StatusPrice = cboEstado.Text,
+                    IdCustomer = int.Parse(txtClienteId.Text),
+                    IdRoom = int.Parse(txtHabitacionId.Text),
+                    IdPromotion = string.IsNullOrWhiteSpace(txtPromoId.Text) ? (int?)null : int.Parse(txtPromoId.Text),
+                    IdPlan = string.IsNullOrWhiteSpace(txtPlanId.Text) ? (int?)null : int.Parse(txtPlanId.Text)
+
+                };
+
+                _service.CrearReserva(booking);
+                MessageBox.Show("Reserva creada con éxito ✅");
+                CargarReservas();
+                LimpiarFormulario();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void btnEditar2_Click(object sender, EventArgs e)
+        {
+            if (dgvBookings.CurrentRow == null) return;
+
+            try
+            {
+                var booking = new Booking
+                {
+                    IdBooking = int.Parse(txtIdBooking.Text), // 👈 importante
+                    IdWorker = int.Parse(txtIdWorker.Text),
+                    DateStartBooking = dtpInicio.Value,
+                    DateEndBooking = dtpFin.Value,
+                    HowManyPeopleBooking = (int)nudPersonas.Value,
+                    DescriptionBooking = txtDescripcion.Text,
+                    PriceBooking = double.Parse(txtPrecio.Text),
+                    StatusPrice = cboEstado.Text,
+                    IdCustomer = int.Parse(txtClienteId.Text),
+                    IdRoom = int.Parse(txtHabitacionId.Text),
+                    IdPromotion = string.IsNullOrWhiteSpace(txtPromoId.Text) ? (int?)null : int.Parse(txtPromoId.Text),
+                    IdPlan = string.IsNullOrWhiteSpace(txtPlanId.Text) ? (int?)null : int.Parse(txtPlanId.Text)
+                };
+
+                _service.EditarReserva(booking);
+                MessageBox.Show("Reserva editada correctamente ✏️");
+                CargarReservas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvBookings.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una habitación");
+                return;
+            }
+
+            var id = (int)dgvBookings.CurrentRow.Cells["IdBooking"].Value;
+            _service.EliminarReserva(id);
+            MessageBox.Show("Reserva eliminada");
+            CargarReservas();
+        }
+
+        private void BookingForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            CargarReservas(txtBuscar.Text.Trim());
+        }
     }
 }

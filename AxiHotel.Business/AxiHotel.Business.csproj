@@ -51,6 +51,7 @@
     <Compile Include="Services\PlanService.cs" />
     <Compile Include="Services\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\PromotionService.cs" />
     <Compile Include="Services\RoomService.cs" />
     <Compile Include="Services\SessionManager.cs" />
     <Compile Include="Services\WorkerService.cs" />

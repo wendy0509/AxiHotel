@@ -1,5 +1,6 @@
 ﻿using AxiHotel.Data.Models;
 using AxiHotel.Data.Repositories;
+using AxiHotel.Data.Repositories.xi.hotel.data.repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,11 @@ namespace AxiHotel.Business
         public IEnumerable<Booking> ObtenerTodas() => _repo.GetAll();
 
         public Booking Get(int id) => _repo.Get(id);
+        public IEnumerable<Booking> SearchBookings(string filtro)
+        {
+            return _repo.Search(filtro);
+
+        }
     }
 
 }

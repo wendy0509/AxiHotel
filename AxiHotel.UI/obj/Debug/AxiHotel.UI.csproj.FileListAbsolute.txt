@@ -23,3 +23,4 @@ C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.UI\obj\Debug\AxiHotel.FE511F
 C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.UI\obj\Debug\AxiHotel.UI.exe
 C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.UI\obj\Debug\AxiHotel.UI.pdb
 C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.UI\obj\Debug\AxiHotel.UI.BookingForm.resources
+C:\Users\yeimi\OneDrive\Escritorio\Proyect\AxiHotel.UI\obj\Debug\AxiHotel.UI.Promociones.resources

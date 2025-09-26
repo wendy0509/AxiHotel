@@ -58,6 +58,11 @@
             this.txtPlanId = new System.Windows.Forms.TextBox();
             this.txtIdWorker = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEditar2 = new System.Windows.Forms.Button();
+            this.btnRegistrar2 = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPersonas)).BeginInit();
             this.SuspendLayout();
@@ -128,7 +133,7 @@
             this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegistrar.Font = new System.Drawing.Font("Poor Richard", 12F);
-            this.btnRegistrar.Location = new System.Drawing.Point(263, 615);
+            this.btnRegistrar.Location = new System.Drawing.Point(194, 615);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(111, 48);
             this.btnRegistrar.TabIndex = 20;
@@ -142,7 +147,7 @@
             this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditar.Font = new System.Drawing.Font("Poor Richard", 12F);
-            this.btnEditar.Location = new System.Drawing.Point(420, 615);
+            this.btnEditar.Location = new System.Drawing.Point(365, 615);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(111, 48);
             this.btnEditar.TabIndex = 21;
@@ -373,11 +378,77 @@
             this.label12.TabIndex = 47;
             this.label12.Text = "Recepcionista";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDelete.Font = new System.Drawing.Font("Poor Richard", 12F);
+            this.btnDelete.Location = new System.Drawing.Point(536, 615);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(111, 48);
+            this.btnDelete.TabIndex = 48;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEditar2
+            // 
+            this.btnEditar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
+            this.btnEditar2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditar2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEditar2.Font = new System.Drawing.Font("Poor Richard", 12F);
+            this.btnEditar2.Location = new System.Drawing.Point(460, 615);
+            this.btnEditar2.Name = "btnEditar2";
+            this.btnEditar2.Size = new System.Drawing.Size(111, 48);
+            this.btnEditar2.TabIndex = 49;
+            this.btnEditar2.Text = "Editar";
+            this.btnEditar2.UseVisualStyleBackColor = false;
+            this.btnEditar2.Click += new System.EventHandler(this.btnEditar2_Click);
+            // 
+            // btnRegistrar2
+            // 
+            this.btnRegistrar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(104)))), ((int)(((byte)(105)))));
+            this.btnRegistrar2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegistrar2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRegistrar2.Font = new System.Drawing.Font("Poor Richard", 12F);
+            this.btnRegistrar2.Location = new System.Drawing.Point(290, 615);
+            this.btnRegistrar2.Name = "btnRegistrar2";
+            this.btnRegistrar2.Size = new System.Drawing.Size(111, 48);
+            this.btnRegistrar2.TabIndex = 50;
+            this.btnRegistrar2.Text = "Registrar";
+            this.btnRegistrar2.UseVisualStyleBackColor = false;
+            this.btnRegistrar2.Click += new System.EventHandler(this.btnRegistrar2_Click);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.txtBuscar.Location = new System.Drawing.Point(334, 47);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(226, 26);
+            this.txtBuscar.TabIndex = 51;
+            this.txtBuscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(278, 50);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(50, 19);
+            this.label13.TabIndex = 52;
+            this.label13.Text = "Buscar";
+            // 
             // BookingForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(160)))), ((int)(((byte)(120)))));
             this.ClientSize = new System.Drawing.Size(800, 666);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.txtBuscar);
+            this.Controls.Add(this.btnRegistrar2);
+            this.Controls.Add(this.btnEditar2);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtIdWorker);
             this.Controls.Add(this.label11);
@@ -414,6 +485,7 @@
             this.Text = "BookingForm";
             this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(36)))), ((int)(((byte)(33)))));
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
+            this.Load += new System.EventHandler(this.BookingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPersonas)).EndInit();
             this.ResumeLayout(false);
@@ -452,5 +524,10 @@
         private System.Windows.Forms.TextBox txtPlanId;
         private System.Windows.Forms.TextBox txtIdWorker;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnEditar2;
+        private System.Windows.Forms.Button btnRegistrar2;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Label label13;
     }
 }

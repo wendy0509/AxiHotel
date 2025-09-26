@@ -57,6 +57,7 @@
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\HotelPlan.cs" />
+    <Compile Include="Models\Promotions.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Worker.cs" />
     <Compile Include="Program.cs" />
@@ -66,8 +67,10 @@
     <Compile Include="Repositories\IBookingRepository.cs" />
     <Compile Include="Repositories\ICustomerRepository.cs" />
     <Compile Include="Repositories\IPlanRepository.cs" />
+    <Compile Include="Repositories\IPromotionsRepository.cs" />
     <Compile Include="Repositories\IRoomRepository.cs" />
     <Compile Include="Repositories\PlanRepository.cs" />
+    <Compile Include="Repositories\PromotionsRepository.cs" />
     <Compile Include="Repositories\RoomRepository.cs" />
     <Compile Include="Repositories\WorkerRepository.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

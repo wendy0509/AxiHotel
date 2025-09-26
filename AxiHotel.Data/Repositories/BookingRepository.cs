@@ -197,6 +197,53 @@ namespace AxiHotel.Data.Repositories
                 }
                 return booking;
             }
+            public IEnumerable<Booking> Search(string filtro)
+            {
+                var list = new List<Booking>();
+
+                using (var cn = Db.Open())
+                using (var cmd = new SqlCommand(@"
+        SELECT b.IdBooking, b.DateStartBooking, b.DateEndBooking, 
+               b.HowManyPeopleBooking, b.DescriptionBooking, 
+               b.PriceBooking, b.StatusPrice, 
+               b.IdCustomer,
+               b.IdRoom, b.IdPromotion, b.IdPlan, b.IdWorker
+        FROM Booking b
+        INNER JOIN Customer c ON b.IdCustomer = c.IdCustomer
+        WHERE b.DescriptionBooking LIKE @filtro
+           OR b.StatusPrice LIKE @filtro
+           OR CAST(b.IdCustomer AS VARCHAR) LIKE @filtro
+           OR CAST(b.IdRoom AS VARCHAR) LIKE @filtro", cn)) // 🔹 búsqueda por Id también
+                {
+                    cmd.Parameters.AddWithValue("@filtro", $"%{filtro}%");
+
+                    using (var rd = cmd.ExecuteReader())
+                    {
+                        while (rd.Read())
+                        {
+                            list.Add(new Booking
+                            {
+                                IdBooking = (int)rd["IdBooking"],
+                                DateStartBooking = Convert.ToDateTime(rd["DateStartBooking"]),
+                                DateEndBooking = Convert.ToDateTime(rd["DateEndBooking"]),
+                                HowManyPeopleBooking = (int)rd["HowManyPeopleBooking"],
+                                DescriptionBooking = rd["DescriptionBooking"].ToString(),
+                                PriceBooking = Convert.ToDouble(rd["PriceBooking"]),
+                                StatusPrice = rd["StatusPrice"].ToString(),
+                                IdCustomer = (int)rd["IdCustomer"],
+                                IdRoom = (int)rd["IdRoom"],
+                                IdPromotion = rd["IdPromotion"] == DBNull.Value ? null : (int?)rd["IdPromotion"],
+                                IdPlan = rd["IdPlan"] == DBNull.Value ? null : (int?)rd["IdPlan"],
+                                IdWorker = (int)rd["IdWorker"]
+                            });
+                        }
+                    }
+                }
+
+                return list;
+            }
+
+
         }
 
     }

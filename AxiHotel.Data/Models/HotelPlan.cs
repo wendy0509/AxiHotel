@@ -8,10 +8,10 @@ namespace AxiHotel.Data.Models
 {
     public class HotelPlan
     {
-        public int IdPlan;
-        public int HowManyPeoplePlan;
-        public string DescriptionPlan;
-        public string NamePlan;
-        public int IdWorker;
+        public int IdPlan { get; set; }
+        public int HowManyPeoplePlan { get; set; }
+        public string DescriptionPlan { get; set; }
+        public string NamePlan { get; set; }
+        public int IdWorker {  get; set; }
     }
 }

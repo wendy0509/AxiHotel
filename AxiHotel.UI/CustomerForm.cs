@@ -221,6 +221,11 @@ namespace AxiHotel.UI
             _custSrv.Delete(id);
             LoadGrid();
         }
+
+        private void dgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
 }

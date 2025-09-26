@@ -1,4 +1,5 @@
 ﻿using AxiHotel.Business;
+using AxiHotel.Business.Services;
 using AxiHotel.Data.Models;
 using AxiHotel.Data.Repositories;
 using AxiHotel.Data.Repositories.xi.hotel.data.repositories;
@@ -86,12 +87,32 @@ namespace AxiHotel.UI
 
         private void btnPromociones_Click(object sender, EventArgs e)
         {
+            // Crear el repositorio de promociones
+            var promotionsRepo = new PromotionsRepository();
 
+            // Crear el servicio de promociones y pasarle el repositorio
+            var promotionsSrv = new PromotionService();
+
+            // Crear el formulario de promociones y pasarle el servicio
+            var form = new Promociones();
+
+            // Mostrar el formulario
+            form.Show();
         }
 
         private void btnPromociones2_Click(object sender, EventArgs e)
         {
+            // Crear el repositorio de promociones
+            var promotionsRepo = new PromotionsRepository();
 
+            // Crear el servicio de promociones y pasarle el repositorio
+            var promotionsSrv = new PromotionService();
+
+            // Crear el formulario de promociones y pasarle el servicio
+            var form = new Promociones();
+
+            // Mostrar el formulario
+            form.Show();
         }
 
         private void btnPlanes_Click(object sender, EventArgs e)

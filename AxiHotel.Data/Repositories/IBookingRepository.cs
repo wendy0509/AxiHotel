@@ -17,5 +17,6 @@ namespace AxiHotel.Data.Repositories
         int Delete(int idBooking);
         IEnumerable<Booking> GetAll();
         Booking Get(int id);
+        IEnumerable<Booking> Search(string filtro);
     }
 }
